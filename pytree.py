@@ -24,17 +24,15 @@ def print_tree(path, indent="", lst=[]):
             print(indent + '├── ' + files[i])
         if os.path.isdir(fullpath):
             if i == len(files) - 1:
-                print_tree(fullpath, indent+'    ')
+                print_tree(fullpath, indent + '    ')
             else:
-                print_tree(fullpath, indent+'│   ')
+                print_tree(fullpath, indent + '│   ')
     return lst
-
-
 
 if __name__ == '__main__':
 	if len(sys.argv) == 1:
 		dir = '.'
-	if len(sys.argv) == 2:
+    elif len(sys.argv) == 2:
 	    dir = sys.argv[1]
 	elif len(sys.argv) > 2:
 	    print("Usage: %s [path]" % sys.argv[0])
@@ -48,13 +46,13 @@ if __name__ == '__main__':
 	k = print_tree(dir)
 	print
 
-	d1,f1 = 0,0
+	d1, f1 = 0, 0
 	for i in k:
 		if os.path.isdir(i):
-			d1 += 1
+            d1 += 1
 		else:
 			f1 += 1
 	# print os.getcwd()
-	print("\n"+str(d1) + " directories, " + str(f1) + " files") #, k, "list"
+	print("\n" + str(d1) + " directories, " + str(f1) + " files") #, k, "list"
 
     # subprocess.run(['tree'] + sys.argv[1:])
