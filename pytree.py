@@ -8,7 +8,7 @@ import re
 def print_tree(path, indent="", lst = []):
     files = os.listdir(path)
     files = list(filter( lambda f: not f.startswith('.'), files))
-    # files = sorted(files)
+    files = sorted(files)
 
     for i in range(0, len(files)):
         fullpath = path + "/" + files[i]
