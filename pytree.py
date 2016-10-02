@@ -5,10 +5,15 @@ import sys
 import os
 import re
 
+
+def sortkeys(s):
+    return re.sub('[^A-Za-z0-9]+', '', s).lower()
+
+
 def print_tree(path, indent="", lst = []):
     files = os.listdir(path)
     files = list(filter( lambda f: not f.startswith('.'), files))
-    files = sorted(files, key=lambda v: v.upper())
+    files = sorted(files, key=sortkeys)
 
     for i in range(0, len(files)):
         fullpath = path + "/" + files[i]
