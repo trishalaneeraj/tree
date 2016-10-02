@@ -10,7 +10,7 @@ def sortkeys(s):
     return re.sub('[^A-Za-z0-9]+', '', s).lower()
 
 
-def print_tree(path, indent="", lst = []):
+def print_tree(path, indent="", lst=[]):
     files = os.listdir(path)
     files = list(filter( lambda f: not f.startswith('.'), files))
     files = sorted(files, key=sortkeys)
@@ -27,13 +27,12 @@ def print_tree(path, indent="", lst = []):
 
         if os.path.isdir(fullpath):
             if (i == len(files) - 1):
-                print_tree(fullpath, indent+'    ')
+                print_tree(fullpath, indent+ '    ')
             else:
-                print_tree(fullpath, indent+'│   ')
+                print_tree(fullpath, indent+ '│   ')
     return lst
 
 if __name__ == '__main__':
-
 	if len(sys.argv) == 1:
 		dir = '.'
 	if len(sys.argv) == 2:
