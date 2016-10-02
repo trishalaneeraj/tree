@@ -3,28 +3,26 @@
 
 import sys
 import os
-import re
 
 def print_tree(path, indent="", lst = []):
     files = os.listdir(path)
     files = list(filter( lambda f: not f.startswith('.'), files))
-    files = sorted(files)
-
+    
     for i in range(0, len(files)):
         fullpath = path + "/" + files[i]
         lst.append(fullpath)
         if i == len(files)-1:
-            print(indent + '└── ' + files[i])
-
+            print(indent + "└── "  + files[i])
+            
         else:
-            print(indent + '├── ' + files[i])
-
+            print(indent + "├── " + files[i])
+            
 
         if os.path.isdir(fullpath):
             if i == len(files)-1:
-                print_tree(fullpath, indent+'    ')
+                print_tree(fullpath, indent+"    ")
             else:
-                print_tree(fullpath, indent+'│   ')
+                print_tree(fullpath, indent+"│   ")
     return lst
 
 
@@ -33,7 +31,7 @@ if __name__ == '__main__':
     # just for demo
 
     # Process command-line arguments.
-
+	dir = os.getcwd()
 
 	if len(sys.argv) == 1:
 		dir = '.'
@@ -50,7 +48,7 @@ if __name__ == '__main__':
 
 	print(dir)
 	k = print_tree(dir)
-	print
+	print("\n")
 
 	d1,f1=0,0
 	for i in k:
@@ -59,6 +57,6 @@ if __name__ == '__main__':
 		else:
 			f1+=1
 	# print os.getcwd()
-	print("\n"+str(d1)+ " directories, "+str(f1)+ " files") #, k, "list"
+	print(str(d1)+ " directories,"+str(f1)+ " files") #, k, "list"
 
     # subprocess.run(['tree'] + sys.argv[1:])
