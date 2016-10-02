@@ -8,7 +8,7 @@ import re
 def print_tree(path, indent="", lst = []):
     files = os.listdir(path)
     files = list(filter( lambda f: not f.startswith('.'), files))
-    files = sorted(files)
+    files = sorted(files, key=lambda v: v.upper())
 
     for i in range(0, len(files)):
         fullpath = path + "/" + files[i]
@@ -39,7 +39,6 @@ if __name__ == '__main__':
 	    print("Usage: %s [path]" % sys.argv[0])
 	    sys.exit(0)
 
-	# Make sure we really have a path.
 	if not os.path.isdir(dir):
 	    print("E: that is not a valid path")
 	    sys.exit(0)
