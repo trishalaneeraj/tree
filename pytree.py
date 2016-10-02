@@ -12,7 +12,7 @@ def sortkeys(s):
 
 def print_tree(path, indent="", lst=[]):
     files = os.listdir(path)
-    files = list(filter( lambda f: not f.startswith('.'), files))
+    files = list(filter(lambda f: not f.startswith('.'), files))
     files = sorted(files, key=sortkeys)
 
     for i in range(0, len(files)):
@@ -23,13 +23,11 @@ def print_tree(path, indent="", lst=[]):
 
         else:
             print(indent + '├── ' + files[i])
-
-
         if os.path.isdir(fullpath):
             if (i == len(files) - 1):
-                print_tree(fullpath, indent+ '    ')
+                print_tree(fullpath, indent + '    ')
             else:
-                print_tree(fullpath, indent+ '│   ')
+                print_tree(fullpath, indent + '│   ')
     return lst
 
 if __name__ == '__main__':
