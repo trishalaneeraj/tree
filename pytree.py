@@ -18,7 +18,7 @@ def print_tree(path, indent="", lst = []):
     for i in range(0, len(files)):
         fullpath = path + "/" + files[i]
         lst.append(fullpath)
-        if i == len(files)-1:
+        if (i == len(files) - 1):
             print(indent + '└── ' + files[i])
 
         else:
@@ -26,7 +26,7 @@ def print_tree(path, indent="", lst = []):
 
 
         if os.path.isdir(fullpath):
-            if i == len(files)-1:
+            if (i == len(files) - 1):
                 print_tree(fullpath, indent+'    ')
             else:
                 print_tree(fullpath, indent+'│   ')
